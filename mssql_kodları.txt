@@ -1,0 +1,33 @@
+create table Ogrenciler(
+ogr_no varchar(9) primary key,
+ogr_ad varchar(20),
+ogr_soyad varchar(20),
+ogr_bolum varchar(50),
+ogr_mail varchar(50),
+ogr_tel varchar(11),
+)
+create table Yazarlar(
+y_id int primary key,
+y_ad nvarchar(50)
+)
+create table Kitaplar(
+ISBN varchar(13) primary key,
+k_ad varchar(50),
+k_sayfa varchar(5),
+k_tur varchar(20),
+k_yayinevi varchar(50),
+y_ad nvarchar(50)
+)
+create table Kiralik(
+ISBN varchar(13) primary key,
+k_ad varchar(50),
+k_sayfa varchar(5),
+k_tur varchar(20),
+k_yayinevi varchar(50),
+y_ad nvarchar(50),
+a_tarih nvarchar(10),
+v_tarih nvarchar(10),
+ogr_no varchar(9)
+)
+alter table Kiralik
+add foreign key (ogr_no) references Ogrenciler(ogr_no);
